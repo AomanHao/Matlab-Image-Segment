@@ -1,18 +1,18 @@
 clear
-% noise_num=[0.001;0.002;0.006;0.01];
-% noise_num=[0.002;0.006;0.01];
+ noise_num=[0.001;0.002;0.006;0.01];%高斯噪声系数
+% noise_num=[0.002;0.006;0.01];%椒盐噪声系数
 % 
 % noise_num=[0.02;0.05;0.1];
 noise_type='guass';
 % noise_type='salt';
 % % noise_type='no_noise';
-noise_num=0.05;
-for ii=1:1
+% noise_num=0.05;
+for ii=1:3
     noise=noise_num(ii,:);
 
 close all
 clc
-%%%%%%%%%%%%%%%%%图像%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%选择图像%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % I=imread('42049.jpg'); 
 %  I=imread('238011.jpg');
 % I=imread('15088.jpg');
@@ -38,11 +38,7 @@ clc
 %   I=imread('55067.jpg');%8类
 %   I=imread('296059.jpg');
 %   I=imread('42044.jpg');%2类
-%     I=imread('D:\图像信号处理\BSDS300-images\刑侦图库\1239.jpg');
-% I=imread('D:\图像信号处理\BSDS300-images\刑侦图库\1384.jpg');
-% I=imread('D:\图像信号处理\BSDS300-images\刑侦图库\389.jpg');
-% I=imread('D:\图像信号处理\BSDS300-images\刑侦图库\1 (6).jpg');
-% I=imread('D:\图像信号处理\BSDS300-images\刑侦图库\1 (9).jpg');
+
 
 if size(I,3) == 3
    I=rgb2gray(I);
@@ -115,18 +111,13 @@ labels2=uint16(labels2);
  
 % clabels=imread('circles.png');%人工图的标准图
 % clabels((clabels<50))=1;clabels((50<clabels & clabels<120) )=2;clabels((120<clabels & clabels<190))=3;clabels((190<clabels))=4;
-clabels=imread('mmi3.png');%人工图的标准图
-clabels((clabels<50))=1;clabels((50<clabels & clabels<120) )=2;clabels((120<clabels & clabels<190))=3;clabels((190<clabels))=4;
+% clabels=imread('mmi3.png');%人工图的标准图
+% clabels((clabels<50))=1;clabels((50<clabels & clabels<120) )=2;clabels((120<clabels & clabels<190))=3;clabels((190<clabels))=4;
 
 %% 评价指标
 correct = renumber(clabels,labels2) ;              %图像准确率
 [V_pc,V_pe_10,V_pe_e]=V_pcpe(U2); %划分系数，划分熵 
 Vol=VOI_h(clabels,labels2,k);% 评价指标互信息VOI
-
-%%选择好的聚类图的数据---------帅选
-labels3=labels2;
-labels4=labels2;
-labels5=labels2;
 
 %显示聚类分割图
 labels2(find(labels2==1))=0;
@@ -146,26 +137,6 @@ imwrite(labels2,['3.1.','-',noise_type,'-',num2str(noise),'.tiff'],'tiff','Resol
 % img_correct=uint8(img_correct);
 % % figure;imshow(img_correct,[]);title('(d)标准分割图');imwrite(img_correct,'4.jpg')%保存为jpg
 % figure;imshow(img_correct,[]);title('(d)标准分割图');imwrite(img_correct,'4.tiff','tiff','Resolution',300)%保存为tif，300dpi
-
-
-
-%%%%选择聚类效果图------------帅选
-%显示聚类分割图
-labels3(find(labels3==1))=255;labels3(find(labels3==2))=0;
-labels3(find(labels3==3))=255;labels3(find(labels3==4))=180;
-labels3=uint8(labels3);figure;imshow(labels3,[]);title('(c)聚类分割图');
-imwrite(labels3,['3.2.','-',noise_type,'-',num2str(noise),'.tiff'],'tiff','Resolution',300);%保存为tif
-
-% %显示聚类分割图
-% labels4(find(labels4==1))=255;labels4(find(labels4==2))=0;
-% labels4(find(labels4==3))=0;labels4(find(labels4==4))=180;
-% labels4=uint8(labels4);figure;imshow(labels4,[]);title('(c)聚类分割图');
-% imwrite(labels4,['3.3.','-',noise_type,'-',num2str(noise),'.tiff'],'tiff','Resolution',300);%保存为tif
-% %显示聚类分割图
-% labels5(find(labels5==1))=100;labels5(find(labels5==2))=255;
-% labels5(find(labels5==3))=180;labels5(find(labels5==4))=0;
-% labels5=uint8(labels5);figure;imshow(labels5,[]);title('(c)聚类分割图');
-% imwrite(labels5,['3.4.','-',noise_type,'-',num2str(noise),'.tiff'],'tiff','Resolution',300);%保存为tif
 
 
 correct_end(ii,:)= roundn(correct,-4);
