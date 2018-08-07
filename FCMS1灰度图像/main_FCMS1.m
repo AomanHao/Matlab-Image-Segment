@@ -44,6 +44,7 @@ if size(I,3) == 3
    I=rgb2gray(I);
 else
 end
+I=im2double(I);
 figure;imshow(I);title('(a)原始图像');imwrite(I,'1.jpg');
 %I=I;%不加噪声
 % I=imnoise(I,'speckle',deta_2);
@@ -62,11 +63,9 @@ k=4;
 r=3;
 m_index=2;
 beta=6;
-% I = I/255；
-I=im2double(I);
+
 [I_mean,I_median]=compute_mean_median(I,r);%扩展邻域
 % I_median=double(I_median);
-
 
 I4 = I(:);  %% 将图像灰度按列排列
 X_spatial_mean = I_mean(:);
@@ -88,7 +87,6 @@ labels2=reshape(fcm_spatial_mean_label,[m n]);
 labels2=uint16(labels2);
 
 %% %%%%%%%%%%%%%%%%%%%%%%%%准确率%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 % correct = renumber(clusts_real,psofcm_label)            %数据准确率
 %load clabels-sq2.mat;  
 % load clabels-238011.mat;  

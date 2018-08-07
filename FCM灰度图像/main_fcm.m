@@ -1,18 +1,18 @@
 clear
-% noise_num=[0.001;0.002;0.006;0.01];
-% noise_num=[0.002;0.006;0.01];
+ noise_num=[0.001;0.002;0.006;0.01];%高斯噪声系数
+% noise_num=[0.002;0.006;0.01];%椒盐噪声系数
 % 
 % noise_num=[0.02;0.05;0.1];
 % noise_type='guass';
 noise_type='salt';
 % % noise_type='no_noise';
 noise_num=0.05;
-for ii=1:1
+for ii=1:3
     noise=noise_num(ii,:);
 
 close all
 clc
-%%%%%%%%%%%%%%%%%图像%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%图像%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % I=imread('42049.jpg'); 
 %  I=imread('238011.jpg');
 % I=imread('15088.jpg');
@@ -46,6 +46,7 @@ if size(I,3) == 3
    I=rgb2gray(I);
 else
 end
+I=im2double(I);
 figure;imshow(I);title('(a)原始图像')
 imwrite(I,'1.jpg');
 % I=I;%不加噪声
@@ -60,17 +61,15 @@ imwrite(I,'1.jpg');
 figure;imshow(I);title('(b)加噪图像');
 imwrite(I,'2.jpg');
 [m,n]=size(I);
-
+%k 聚类数目
 k=2;
 % k=3;
 r=3;
 m_index=2;
 beta=6;
-% I = I/255；
-I=im2double(I);
 
 I4 = I(:);  %% 将图像灰度按列排列
-%%------------------------ fcm_spatial_mean------------------------
+%% ------------------------ fcm------------------------
 fcm_spatial_mean_label=zeros(m*n,1);
 t=cputime;
 tic;

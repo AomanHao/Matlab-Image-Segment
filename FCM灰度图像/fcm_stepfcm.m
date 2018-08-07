@@ -1,4 +1,4 @@
-function [U_new, center, obj_fcn] = fcm_spatial_stepfcm(data,U, cluster_n, expo)
+function [U_new, center, obj_fcn] = fcm_stepfcm(data,U, cluster_n, expo)
 
 % % %----------------------------fcm_Ëã·¨------------------------------
 mf = U.^expo;       % MF matrix after exponential modification

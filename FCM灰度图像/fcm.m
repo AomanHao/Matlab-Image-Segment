@@ -1,4 +1,4 @@
-function [center, U, obj_fcn] = fcm_spatial_information(data,cluster_n,options)
+function [center, U, obj_fcn] = fcm(data,cluster_n,options)
 
 
 if nargin ~= 2 & nargin ~= 3,
@@ -41,7 +41,7 @@ U = initfcm(cluster_n, data_n);			% Initial fuzzy partition
 
 % Main loop
 for i = 1:max_iter,
-	[U, center, obj_fcn(i)] = fcm_spatial_stepfcm(data,U, cluster_n, expo);
+	[U, center, obj_fcn(i)] = fcm_stepfcm(data,U, cluster_n, expo);
 	if display, 
 		fprintf('Iteration count = %d, obj. fcn = %f\n', i, obj_fcn(i));
 	end
