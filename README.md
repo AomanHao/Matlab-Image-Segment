@@ -1,5 +1,13 @@
 # matlab
 
-FCM和IFCM聚类算法在图像处理的应用
+Application of FCM and IFCM clustering algorithm in image segmentation， coded by matlab 
+
+FCM和IFCM聚类算法在图像处理的应用，用matlab开发
+
+FCM clustering algorithm in image segmentation, run the `main_fcm.m`
+
 FCM算法图像分割，直接运行`main_fcm.m`文件
+
+IFCM clustering algorithm in image segmentation, run the `main_IFCM.m`
+
 IFCM算法图像分割，直接运行`main_IFCM.m`文件
