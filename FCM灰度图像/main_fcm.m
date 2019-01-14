@@ -1,3 +1,7 @@
+%% 程序分享
+% 西安邮电大学图像处理团队-郝浩
+% 个人博客 www.aomanhao.top
+% Github https://github.com/AomanHao
 clear
 close all
 clc
@@ -28,7 +32,7 @@ k=2;
 % k=3;
 
 I4 = I(:);  %% 将图像灰度按列排列
-%% ------------------------ fcm------------------------
+%% ------------------------ fcm算法------------------------
 fcm_spatial_mean_label=zeros(m*n,1);
 t=cputime;
 tic;
@@ -51,5 +55,5 @@ labels2(find(labels2==3))=180;
 labels2(find(labels2==4))=100;
 labels2=uint8(labels2);
 figure;imshow(labels2,[]);title('(c)聚类分割图');
-imwrite(labels2,'3.1.tiff','tiff','Resolution',300);%保存为tif
+imwrite(labels2,'3.1.tiff','tiff','Resolution',300);%输出结果，保存为tif图片
 
