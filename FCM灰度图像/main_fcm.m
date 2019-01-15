@@ -2,6 +2,8 @@
 % 西安邮电大学图像处理团队-郝浩
 % 个人博客 www.aomanhao.top
 % Github https://github.com/AomanHao
+%--------------------------------------
+
 clear
 close all
 clc
@@ -19,11 +21,6 @@ imwrite(I,'1.jpg');
 %I=imnoise(I,'speckle',deta_2);
 % I=imnoise(I,'salt & pepper',0.05); %加噪图
 % I=imnoise(I,'gaussian',0,0.01); % 加高斯噪声
-
-%循环加噪声
-% I=imnoise(I,'gaussian',0,noise); % 加高斯噪声
-%  I=imnoise(I,'salt & pepper',noise); %加椒盐噪图
- 
 figure;imshow(I);title('(b)加噪图像');
 imwrite(I,'2.jpg');
 [m,n]=size(I);

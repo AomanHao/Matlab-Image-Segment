@@ -1,3 +1,12 @@
+%% 程序分享 
+% 西安邮电大学图像处理团队-郝浩
+% 个人博客 www.aomanhao.top
+% Github https://github.com/AomanHao
+%--------------------------------------
+
+clear
+close all
+clc
 clear
 close all
 clc
@@ -16,7 +25,7 @@ I=imnoise(I,'salt & pepper',0.05); %加噪图椒盐噪声
 % I=imnoise(I,'gaussian',0,0.01); % 加高斯噪声
 
  
-figure;imshow(I);title('(b)加噪图像');imwrite(I,['2.',num2str(noise),'.tiff'],'tiff','Resolution',300);%保存为tif
+figure;imshow(I);title('(b)加噪图像');imwrite(I,['2.','.tiff'],'tiff','Resolution',300);%保存为tif
 [m,n]=size(I);
 
 % k=4;
@@ -53,8 +62,5 @@ labels2(find(labels2==4))=180;
 labels2=uint8(labels2);
 % figure;imshow(labels2,[]);title('(c)聚类分割图');imwrite(labels2,'3.jpg');imwrite(labels2,'33.png')%保存为jpg
 figure;imshow(labels2,[]);title('(c)聚类分割图');
-imwrite(labels2,['3.1.','-',noise_type,'.tiff'],'tiff','Resolution',300);%保存为tif
+imwrite(labels2,['3.1.','.tiff'],'tiff','Resolution',300);%保存为tif
 
-
-
-end
