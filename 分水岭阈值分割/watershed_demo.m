@@ -1,4 +1,10 @@
-%% 不用分水岭进行分割
+%% 程序分享 
+% 西安邮电大学图像处理团队-郝浩
+% 个人博客 www.aomanhao.top
+% Github https://github.com/AomanHao
+%--------------------------------------
+
+%% 分水岭进行分割
 I=imread('rice.png');
 J=imtophat(I,strel('disk',15));
 bw=im2bw(J,graythresh(J));
