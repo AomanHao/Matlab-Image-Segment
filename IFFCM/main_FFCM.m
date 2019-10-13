@@ -39,6 +39,10 @@ end
 labels2=reshape(label,[m n]);
 
 %% 显示聚类分割图
+labels2(find(labels2==1))=0;
+labels2(find(labels2==2))=255;
+labels2(find(labels2==3))=180;
+labels2(find(labels2==4))=100;
 labels2=uint8(labels2);
 % figure;imshow(labels2,[]);title('(c)聚类分割图');imwrite(labels2,'3.jpg');imwrite(labels2,'33.png')%保存为jpg
 figure;imshow(labels2,[]);title('(c)聚类分割图');imwrite(labels2,'3.tiff','tiff','Resolution',300);%保存为tif
