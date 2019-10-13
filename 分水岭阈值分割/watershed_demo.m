@@ -11,9 +11,8 @@ bw=im2bw(J,graythresh(J));
 bw_opened=bwareaopen(bw,5);
 L1=bwlabel(bw_opened);
 rgb1=label2rgb(L1, 'spring', 'c', 'shuffle');
-figure
-subplot(1,2,1),imshow(I),title('原始图像')
-subplot(1,2,2),imshow(rgb1),title('不使用分水岭的分割结果')
+figure;subplot(1,2,1),imshow(I),title('原始图像');
+subplot(1,2,2),imshow(rgb1),title('不使用分水岭的分割结果');
 
 % 使用控制标记符的分水岭分割
 %% 1. Compute a segmentation function.  This is an image whose dark regions are the objects you are trying to segment.

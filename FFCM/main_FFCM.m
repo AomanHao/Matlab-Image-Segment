@@ -25,20 +25,18 @@ I=im2double(I);
 I4 = I(:);  %% 将图像灰度按列排列
 
 %% ------------------------ IFFCM算法------------------------
-fcm_spatial_mean_label=zeros(m*n,1);
+label=zeros(m*n,1);
 t=cputime;
 tic;
-[center, U, obj_fcn2] = ffcm_spatial_information(I4,k);
+[center, U, obj_fcn2] = iffcm(I4,k);
 toc;
 time_fcm_spatial_mean=cputime-t;
 maxU2 = max(U);   %隶属度最大  
 for j=1:k
     index = find(U(j, :) == maxU2);  %隶属度最大对应的像素位置
-    fcm_spatial_mean_label(index) = j;    
+    label(index) = j;    
 end
-labels2=reshape(fcm_spatial_mean_label,[m n]);
-
-
+labels2=reshape(label,[m n]);
 
 %% 显示聚类分割图
 labels2=uint8(labels2);

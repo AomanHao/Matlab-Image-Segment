@@ -1,4 +1,4 @@
-function [center, U, obj_fcn] = ffcm_spatial_information(data, cluster_n)
+function [center, U, obj_fcn] = iffcm(data, cluster_n)
 
 
 if nargin ~= 2 & nargin ~= 3,
@@ -45,7 +45,7 @@ center= initifcmv(cluster_n);            %初始化聚类中心
 % Main loop
 for i = 1:max_iter,
 	%[U, center, obj_fcn(i)] = fcm_spatial_stepfcm(data,data_spatial, U, cluster_n, expo, beta);
-    [U, center, obj_fcn(i)] = ffcm_spatial_stepfcm(histdata, center, cluster_n, expo,histrate);
+    [U, center, obj_fcn(i)] = iffcm_step(histdata, center, cluster_n, expo,histrate);
 	if display, 
 		fprintf('Iteration count = %d, obj. fcn = %f\n', i, obj_fcn(i));
 	end

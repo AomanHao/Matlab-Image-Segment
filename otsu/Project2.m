@@ -1,12 +1,17 @@
-% Keegan Donley
-% Dec 5, 2017
+%% 程序分享 
+% 西安邮电大学图像处理团队-郝浩
+% 个人博客 www.aomanhao.top
+% Github https://github.com/AomanHao
+%--------------------------------------
+clear
+close all
+clc
 
-% Open image
-I = imread('Input.png');
-% Initialize histogram
+I=imread('rice.png');
+figure;imshow(I),title('原始图像');
+
+%% 计算灰度值分布
 H = zeros(256);
-
-% Calculate histogram
 [l, w] = size(I);
 for r = 1:l
     for c = 1:w
@@ -15,12 +20,10 @@ for r = 1:l
         H(index) = H(index) + 1;
     end
 end
-
-% Display histogram
 figure;
 hist = bar(0:255, H, 'histc');
 
-% Thresholding
+%% 阈值计算
 q = zeros(255);
 q(1) = H(1) / (l * w);
 n = zeros(255);
@@ -50,9 +53,10 @@ for i = 1:255
         index = i;
     end
 end
-th = index
-I2 = zeros(size(I));
-I2 (find(I>=th)) = 255;
-I2 (find(I<th)) = 0;
-figure;
-imshow(I2)
+th = index;
+I_res = zeros(size(I));
+I_res (find(I>=th)) = 255;
+I_res (find(I<th)) = 0;
+I_res=uint8(I_res);
+figure;imshow(I_res,[]);title('分割图');imwrite(I_res,'3.tiff','tiff','Resolution',300);%保存为tif
+
