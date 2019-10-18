@@ -1,12 +1,20 @@
+%% 程序分享 
+% 西安邮电大学图像处理团队-郝浩
+% 个人博客 www.aomanhao.top
+% Github https://github.com/AomanHao
+%--------------------------------------
+
 close all;
 clear;
 clc;
 
 % STEP 1: 读入彩色图像并将其转换为灰度
-I_orig = imread('pears.png');
+I_orig = imread('rice.png');
 figure;imshow(I_orig);title('原图')
 if(length(size(I_orig))==3)
     I = rgb2gray(I_orig);
+else
+    I=I_orig;
 end
 figure;imshow(I), title('灰度图');
 figure;imhist(I);title('灰度直方图');
