@@ -1,10 +1,12 @@
-function g=localthresh(f,nhood,a,b,meantype)%该函数执行局部阈值处理
-f=tofloat(f);
-SIG=stdfilt(f,nhood);
-if nargin==5 && strcmp(meantype,'global');
-    MEAN=mean2(f);
-else
-    MEAN=localmean(f,nhood);
-end
-g=(f>a*SIG) & (f>b*MEAN);
+function g=LocalThresh(f,nhood,a)
+%% 该函数OTSU+标准差处理
+f_thr=graythresh(f);%计算阈值
+f_glob=im2bw(f,f_thr);%分割图像
+
+% f=tofloat(f);
+SIG=stdfilt(f,nhood);%标准差
+g=(f>a*SIG) & f_glob;
+
+
+
     
