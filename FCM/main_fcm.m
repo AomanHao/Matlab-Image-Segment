@@ -1,7 +1,7 @@
 %% 程序分享 
-% 西安邮电大学图像处理团队-郝浩
 % 个人博客 www.aomanhao.top
 % Github https://github.com/AomanHao
+% CSDN https://blog.csdn.net/Aoman_Hao
 %--------------------------------------
 
 clear
@@ -16,7 +16,6 @@ else
 end
 I=im2double(I);
 figure;imshow(I);title('(a)原始图像')
-imwrite(I,'1.jpg');
 % I=I;%不加噪声
 %I=imnoise(I,'speckle',deta_2);
 % I=imnoise(I,'salt & pepper',0.05); %加噪图
