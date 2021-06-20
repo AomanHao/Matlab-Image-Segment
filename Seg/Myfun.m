@@ -1,4 +1,6 @@
-function scalar = Myfun(x)
-%% 高斯滤波
-w = fspecial('gaussian',[5,5],1);
-scalar  = imfilter(x,w,'replicate');
+function scalar = Myfun(img)
+%% guassain mask filter of weight
+sigma = 5;
+Weight = fspecial('gaussian',[sigma,sigma],1);
+scalar = sum(sum((double(img).*Weight)))/(sigma^2);
+

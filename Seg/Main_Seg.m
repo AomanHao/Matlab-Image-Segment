@@ -1,15 +1,19 @@
-clc;
-close all;
-clear ;
+%% 程序分享 
+% 个人博客 https://www.aomanhao.top
+% Github https://github.com/AomanHao
+%参考 http://blog.sina.com.cn/s/blog_bfb1429c0101io39.html
+%论文 https://www.hindawi.com/journals/cmmm/2013/592790/
+%--------------------------------------
 
-% load all the pictures to be maniputed
-dirpath=dir('3096.jpg');
-dir_length=size(dirpath);
-
-for i_index=1:1:dir_length
-   picture_name_relative=dirpath(i_index).name;
-   picture_name=strcat('C:\Users\Administrator\Documents\MATLAB\',picture_name_relative);
-    I = imread('3096.jpg');
+clear
+close all
+clc
+%% ****************************最大熵图像分割*********************
+img=imread('3096.jpg');
+if size(img,3) == 3
+   I=rgb2gray(img);
+else
+end
     Gray_image = rgb2gray(I);
    imshow(Gray_image);
     [nrow ncol] = size(Gray_image);
